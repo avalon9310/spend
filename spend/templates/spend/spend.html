@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}
+事項頁面
+{% endblock %}
+{% block content %}
+<h1>Spending</h1>
+{% for spends in spend %}
+<li>{{spends.Creation}}{{spends.title}}
+
+</li>
+{% endfor %}
+{% endblock %}
