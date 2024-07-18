@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+    <style>
+        .nav {
+            background-color: rgb(6, 148, 148);
+            color: rgb(26, 23, 22);
+            padding: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            margin: 6px;
+            color: blue;
+        }
+
+
+
+        .field label {
+            font-size: 18px;
+            /* 调整标签的字体大小 */
+        }
+
+        .field .input {
+            font-size: 16px;
+            /* 调整输入框的字体大小 */
+        }
+
+        .spend-item {
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+
+        /* .title {
+            background-color: rgb(233, 174, 24);
+            padding: 3px 6px;
+            border-radius: 3px;
+            margin-left: -6px;
+            margin-right: 6px;
+        } */
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        {% if user.is_authenticated %}
+        Login:{{user.username}}
+        <a href="{% url 'logout' %}">登出</a>
+        {% else %}
+        <a href="{% url 'login' %}">登入</a>
+        <a href="{% url 'register' %}">註冊</a>
+        {% endif %}
+    </div>
+    {% block content %}
+
+
+    {% endblock %}
+    <p style="color: red;">
+        {{message}}
+    </p>
+</body>
+
+</html>
